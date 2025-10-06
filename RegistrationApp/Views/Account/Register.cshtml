@@ -1,0 +1,46 @@
+@model RegistrationApp.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div style="color:green; margin-bottom: 15px;">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
+<form asp-action="Register" method="post">
+    <div>
+        <label asp-for="Username"></label><br />
+        <input asp-for="Username" />
+        <span style="color:red;" asp-validation-for="Username"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label><br />
+        <input asp-for="Email" />
+        <span style="color:red;" asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"></label><br />
+        <input asp-for="Password" type="password" />
+        <span style="color:red;" asp-validation-for="Password"></span>
+    </div>
+
+    <div>
+        <label asp-for="ConfirmPassword"></label><br />
+        <input asp-for="ConfirmPassword" type="password" />
+        <span style="color:red;" asp-validation-for="ConfirmPassword"></span>
+    </div>
+
+    <button type="submit">Register</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
